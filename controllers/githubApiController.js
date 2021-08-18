@@ -15,18 +15,15 @@ function getAllTrendingLangRepo(array,langs) {
     let obj = {};
 let counter = 0;
 langs.forEach(element => {
-    if(!obj[element])
-{
-    counter = 0;
-    obj[element] = {count : counter ,repos :[]};
+    if(!obj[element]){
+    counter = 1;
+    obj[element] = {count : counter ,repos:[]}; 
+}else {
+    obj[element].count++; 
 }
-else {
-    counter++;
-obj[element].count =  counter;
-    }
 })
     array.forEach(element => {
-        obj[element['language'].repos].push(element['full_name']);
+        obj[element['language']].repos.push(element['full_name']);
     })
 return obj;
 }
